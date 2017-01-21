@@ -43,6 +43,10 @@ public class ObjectSpawner : MonoBehaviour {
 		}
 		spawnedObject.transform.position = this.gameObject.transform.position;
 		spawnedObject.GetComponent<Rigidbody2D> ().constraints = RigidbodyConstraints2D.FreezeAll;
+		SpriteRandomizer randomizer = spawnedObject.GetComponent<SpriteRandomizer> ();
+		if (null != randomizer) {
+			randomizer.AssignRandomSprite ();
+		}
 		spawnedObject.SetActive (true);
 		this.activeObjects.Add (spawnedObject);
 	}
