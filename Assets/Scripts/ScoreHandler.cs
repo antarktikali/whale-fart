@@ -17,6 +17,6 @@ public class ScoreHandler : MonoBehaviour {
 	}
 
 	void OnGUI() {
-		this.guiText.text = "SCORE: " + score;
+		this.guiText.text = "SCORE: " + this.score;
 	}
 }
