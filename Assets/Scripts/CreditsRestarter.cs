@@ -1,10 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-public class ScoreHandler : MonoBehaviour {
-	public GUIText guiText;
-	public int score = 0;
+public class CreditsRestarter : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
@@ -13,10 +12,8 @@ public class ScoreHandler : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
-	}
-
-	void OnGUI() {
-		this.guiText.text = "SCORE: " + score;
+		if (Input.GetMouseButtonDown (0)) {
+			SceneManager.LoadScene ("main");
+		}
 	}
 }
