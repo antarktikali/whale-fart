@@ -7,6 +7,7 @@ public class BuildingCollapse : MonoBehaviour {
 	public ObjectSpawner humanSpawner;
 	public string FART_TAG = "fart";
 	public string HUMAN_TAG = "human";
+	public AudioSource audioSource;
 
 	private bool isFalling = false;
 
@@ -20,10 +21,13 @@ public class BuildingCollapse : MonoBehaviour {
 			// Remove the fart
 			other_.gameObject.GetComponent<SpawnedObject>().spawnedBy.DeactivateObject( other_.gameObject );
 			Debug.Log ("make the building fall");
+			this.audioSource.Play ();
+			GameObject.Find ("score").GetComponent<ScoreHandler> ().score -= 5;
 			this.isFalling = true;
 			this.gameObject.GetComponent<Rigidbody2D> ().constraints = RigidbodyConstraints2D.FreezeRotation;
 		} else if (other_.CompareTag (this.HUMAN_TAG) && this.isFalling) {
 			Debug.Log ("destroy human!");
+			GameObject.Find ("score").GetComponent<ScoreHandler> ().score += 5;
 			other_.gameObject.GetComponent<SpawnedObject>().spawnedBy.DeactivateObject( other_.gameObject );
 		}
 	}

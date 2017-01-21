@@ -6,12 +6,14 @@ public class FartSender : MonoBehaviour {
 	public KeyCode fartKey = KeyCode.Space;
 	public ObjectSpawner objectSpawner;
 	public Animator animator;
+	public AudioSource audioSource;
 
 	// Update is called once per frame
 	void Update () {
 		if (Input.GetKeyDown (this.fartKey)) {
 			this.objectSpawner.SpawnObject ();
 			this.animator.Play ("tail_fart");
+			this.audioSource.Play ();
 		}
 	}
 }
